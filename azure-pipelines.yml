@@ -39,5 +39,6 @@ stages:
           $(tag)
 - task: CopyFiles@2
   inputs:
-    contents: '**'
-    targetFolder: $(Build.ArtifactStagingDirectory)
+    SourceFolder: '$(Build.Repository.LocalPath)'
+    Contents: '**'
+    TargetFolder: 
