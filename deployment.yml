@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-deployment
+spec:
+  selector:
+    matchLabels:
+      app: angular
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: angular
+    spec:
+      containers:
+      - name: angular
+        image: mahesh288646/azuredevops2
+        ports: 
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: angular-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: angular
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+   
